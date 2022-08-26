@@ -1,0 +1,218 @@
+
+/* ---- Base Rules ---- */
+body {
+    background: rgb(240, 182, 25);
+    background: linear-gradient(0deg, rgb(240, 182, 25) 0%, rgb(167, 35, 17) 100%);
+    margin: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(8, 0, 0);
+}
+
+
+/* Typeography General*/
+h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 3em;
+    margin: 2em 1rem;
+}
+
+@media only screen and (min-width: 35em){
+    h1 {
+        font-size: 8em;
+        margin: 2em 4rem 1em;
+    }
+}
+
+h2 {
+    border-bottom: 1.5px solid rgb(17, 151, 204);
+    font-family: 'Oxygen', Sans-Serif;
+    font-size: 3em;
+    color: rgb(8, 5, 5);
+}
+
+p {
+    line-height: 1.6em;
+    color: rgb(15, 13, 13);
+}
+
+/* ---- Layout Rules ---- */
+
+
+main {
+    margin: 10vh 1em 10vh;
+}
+
+.main-hero {
+    min-height: 50vh;
+    padding-top: 3em;
+}
+
+section {
+    position: relative;
+    min-height: 81vh;
+}
+
+
+/* ---- Module Rules ---- */
+
+/* Navigation Styles*/
+.navbar__menu ul {
+    padding-left: 0;
+    margin: 0;
+    text-align: right;
+}
+
+.navbar__menu li {
+    display: inline-block;
+}
+
+.navbar__menu .menu__link {
+    display: block;
+    padding: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(12, 6, 6);
+}
+
+.navbar__menu .menu__link:hover {
+    background: rgb(39, 38, 38);
+    color: rgb(248, 246, 246);
+    transition: ease 0.3s all;
+}
+
+/* Header Styles */
+.page__header {
+    background: rgb(238, 236, 236);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+/* Footer Styles */
+.page__footer {
+    background: rgb(8, 8, 8);
+    padding: 3em;
+    color: rgb(252, 237, 237);
+}
+
+.page__footer p{
+    color: rgb(236, 231, 231);
+}
+
+
+/* ---- Theme Rules ---- */
+/* Landing Container Styles */
+.landing__container {
+    padding: 1em;
+    text-align: left;
+}
+
+@media only screen and (min-width: 35em){
+    .landing__container {
+        max-width: 50em;
+        padding: 4em;
+    }
+}
+
+section:nth-of-type(even) .landing__container {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right; 
+}
+
+/* Background Circles */
+section:nth-of-type(odd) .landing__container::before {
+    content: '';
+    background: rgba(255, 255, 255, 0.187);
+    position: absolute;
+    z-index: -5;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(even) .landing__container::before {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    top: 3em;
+    right: 3em;
+    z-index: -5;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n) .landing__container::after {
+    content: '';
+    background: rgb(44, 36, 114);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -5;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n + 1) .landing__container::after {
+    content: '';
+    background: rgb(2, 1, 1);
+    background: linear-gradient(0deg, rgba(21, 59, 26, 0.1) 0%, rgba(26, 23, 23, 0.123) 100%);
+    position: absolute;
+    right: 20vw;
+    bottom: -4em;
+    z-index: -4;
+    width: 14vh;
+    height: 14vh;
+    border-radius: 52%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+
+/* ---- Theme State Rules ---- */
+/* Section Active Styles */
+section.your-active-class {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+section.your-active-class .landing__container::before {
+    opacity: 1;
+    animation: rotate 4s linear 0s infinite forwards;
+}
+
+section.your-active-class .landing__container::after {
+    opacity: 1;
+    animation: rotate 5s linear 0s infinite forwards reverse;
+}
+
+/* Section Active Styles Keyframe Animations */
+
+
+@keyframes rotate {
+	from {
+
+		transform: rotate(0deg)
+		           translate(-1em)
+		           rotate(0deg);
+	}
+    
+	to {
+		transform: rotate(360deg)
+		           translate(-1em) 
+		           rotate(-360deg);
+	}
+}
+
+
